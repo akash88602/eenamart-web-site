@@ -68,7 +68,7 @@ const AdminHeader = () => {
                                     className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-slate-100"
                                 >
                                     <CgMenuGridR />
-                                    <span>Dashboard</span>
+                                    <span>Dashboard </span>
                                 </Link>
                                 <Link to='/admin/productsadd'
                                     href="#"
@@ -84,19 +84,13 @@ const AdminHeader = () => {
                                      <CgProfile />
                                     <span>CategoriesList</span>
                                 </Link>
-                                    <Link to='/admin/users'
+                                  
+                                <Link to='/admin/categories-create'
                                     href="#"
                                     className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-slate-100"
                                 >
                                      <CgProfile />
-                                    <span>Users</span>
-                                </Link>
-                                    <Link to='/admin/users'
-                                    href="#"
-                                    className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-slate-100"
-                                >
-                                     <CgProfile />
-                                    <span>Users</span>
+                                    <span>Add-Categories </span>
                                 </Link>
 
                             </nav>

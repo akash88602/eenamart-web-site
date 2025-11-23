@@ -132,7 +132,17 @@ const AddProducts_Edit = () => {
 
                 <div>
                     <label className="block font-semibold mb-1">Status</label>
-                    <input type="text" name="status" value={formData.status} onChange={handleChange} className="w-full border px-3 py-2 rounded" required />
+                    <select
+                        name="status"
+                        value={formData.status}
+                        onChange={handleChange}
+                        className="w-full border px-3 py-2 rounded"
+                        required
+                    >
+                        <option value="">Select Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
                 </div>
 
                 <div>

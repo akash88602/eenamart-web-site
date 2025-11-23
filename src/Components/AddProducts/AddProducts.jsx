@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Pro from "./Pro";
 import { useNavigate } from "react-router-dom";
 const AddProducts = () => {
-     const navigate = useNavigate();
+    const navigate = useNavigate();
     const [product, setProduct] = useState({
         name: "",
         price: "",
@@ -14,32 +14,35 @@ const AddProducts = () => {
         stock: ""
     });
 
-    const [image, setImage] = useState(null); 
+    const [image, setImage] = useState(null);
     const [categories, setCategories] = useState([]);
+    const [preview, setPreview] = useState(null)
 
-  
+
     useEffect(() => {
         axios.get("http://localhost:4400/categories-list")
             .then((res) => {
-                
-               
+
+
                 setCategories(res.data)
             })
             .catch((err) => console.error(err));
     }, []);
 
-   
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProduct({ ...product, [name]: value });
     };
 
-   
+
     const handleFileChange = (e) => {
-        setImage(e.target.files[0]);
+        const file = e.target.files[0];
+        setImage(file);
+        setPreview(URL.createObjectURL(file));
     };
 
-  
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -68,7 +71,7 @@ const AddProducts = () => {
                     stock: ""
                 });
                 setImage(null);
-                 navigate("/admin/dashboard");
+                navigate("/admin/dashboard");
             })
             .catch((err) => console.error("Error adding product:", err));
     };
@@ -155,25 +158,24 @@ const AddProducts = () => {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium mb-1">Photo</label>
-                    <input
-                        type="file"
-                        name="photo_featured"
-                        onChange={handleFileChange}
-                        className="w-full border rounded-md p-2"
-                    />
+                    <label className="block font-semibold mb-1">Photo</label>
+                    {preview && <img src={preview} alt="Preview" className="w-32 h-32 object-cover mb-2 border rounded" />}
+                    <input type="file" name="photo_featured" onChange={handleFileChange} className="w-full border px-3 py-2 rounded" />
                 </div>
 
                 <div>
                     <label className="block text-sm font-medium mb-1">Status</label>
-                    <input
-                        type="text"
+                    <select
                         name="status"
                         value={product.status}
                         onChange={handleChange}
                         className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Status"
-                    />
+                        required
+                    >
+                        <option value="">Select Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
                 </div>
 
                 <div>
