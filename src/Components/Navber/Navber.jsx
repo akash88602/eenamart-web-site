@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 const Navber = () => {
     
     return (  
-        <div>
-              <div class="navbar">
+        <div className=''>
+              <div class="navbar  bg-base-100 shadow-md ">
                 <div class="navbar-start">
                     <div class="dropdown">
                         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">

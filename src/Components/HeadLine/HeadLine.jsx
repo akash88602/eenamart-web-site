@@ -13,10 +13,13 @@ const HeadLine = () => {
     }, [])
     return (
         <div>
-            <div className="navbar lg:bg-error lg:shadow-sm mb-5 ">
+            <div className="w-full bg-error shadow-sm hidden lg:block lg:-mt-6 ">
 
-                <div className="navbar-center text-center hidden lg:flex  rounded-box z-1  ">
-                    <ul className="menu menu-horizontal px-10 gap-20 text-xl ">
+                <div className="max-w-6xl mx-auto  ">
+                 
+
+                     <nav className="flex items-center justify-center h-11">
+                    <ul className=" flex gap-8 text-white font-semibold text-[15px] ">
                         {
                             menu.map((d, i) => {
                                 return (
@@ -32,6 +35,7 @@ const HeadLine = () => {
 
 
                     </ul>
+                    </nav>
                 </div>
 
             </div>
